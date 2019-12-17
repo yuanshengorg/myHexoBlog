@@ -102,3 +102,8 @@ deploy:
   type: git
   repo: https://github.com/yuanshengorg/yuanshengorg.github.io.git
   branch: master
+
+# 全文搜索
+search:
+  path: search.xml
+  field: post
