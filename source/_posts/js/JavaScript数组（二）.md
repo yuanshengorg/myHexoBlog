@@ -1,10 +1,11 @@
 ---
 title: JavaScript 数组（二）
-category: JavaScript
-date: 2019-12-12 23:00
+categories: JavaScript
+tags: js
+date: 
 ---
 
-![20191213144049](http://mdimg.95408.com/20191213144049.png)
+
 
 ## 一、遍历数组
 
@@ -342,6 +343,8 @@ var points = [40, 100, 1, 5, 25, 10];
 var a = Math.min.apply(Math, points)
 console.log(a); // 1
 ```
+
+![20191213144049](http://mdimg.95408.com/20191213144049.png)
 
 ![](http://mdimg.95408.com/201912130047_162.png?imageView2/2/w/1200/h/1200)
 

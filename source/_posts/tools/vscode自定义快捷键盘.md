@@ -1,7 +1,8 @@
 ---
 title: 自定义 vs code 命令快捷键
-category: 效率工具
-date: 2019-02-11 11:28
+categories: 工具
+tags: vscode
+date: 
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 title: git和github
-date: 2019-12-17 14:43:36
-tags:
+categories: 工具
+tags: [git, github]
+date: 
 ---
 
 # git 本地仓库

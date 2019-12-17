@@ -1,7 +1,8 @@
 ---
 title: JavaScript 数组（一）
-category: JavaScript
-date: 2019-12-12 23:00
+categories: JavaScript
+tags: js
+date: 
 ---
 
 ## 数组
