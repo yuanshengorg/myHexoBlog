@@ -6,7 +6,7 @@
 
 这是一个笔记本，处于将书读薄的阶段：将内容简化输出成笔记，方便查阅。
 
-地址：` www.halfbamboo ` 或  ` halfbamboo.github.io` 
+地址：` halfbamboo.com ` 
 
 **您可以：**
 

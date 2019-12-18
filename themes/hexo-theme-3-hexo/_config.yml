@@ -12,13 +12,13 @@ link:
   theme: color # 链接样式，color: 彩色图标  white: 黑白图标
   items:
     rss: 
-    github: https://yuanshengorg.github.com
+    github: https://github.com/yuanshengorg
     facebook:
     twitter:
     linkedin:
     instagram:
     reddit: 
-    weibo: 
+    weibo: http://www.95408.com
     jianshu: 
     zhihu: 
     csdn:
@@ -76,7 +76,7 @@ menu:
 # 文末声明
 article_txt: 
 
-bottom_text: ©2009-2019 半根竹子
+bottom_text: ©2009-2019 半根竹子.
 # 自定义页面最下方的站点版权信息
 # 如果不填，则自定义为 ©2017 author (这个author为hexo根目录_config.yml中配置的)
 
@@ -150,8 +150,8 @@ index_bg_img:
 other_bg_img:
 
 # 点击图片放大样式
-img_resize: default
-# 可选值：
+img_resize: 
+# 可选值：photoSwipe
 # default: 默认(自己写的简单的放大)
 # photoSwipe: 使用photoSwipe插件
 
