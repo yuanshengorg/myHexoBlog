@@ -29,11 +29,22 @@ h1, h2, h3, h4, h5, h6
   border-bottom 1px solid #eee
 h1
   font-size 1.8em
-  color #009688
+  color #333
 h2
-  color #008e80
+  color #333
+  &:before
+    content "\e905"
+    font-family 'icomoon' !important
+    color #168b6f
+    margin-right 10px
 h3
-  color #33caa6
+  color #168b6f
+  font-weight 500
+  &:before
+    content "\f02d"
+    font-family 'icomoon' !important
+    color #999
+    margin-right 10px
 .nav
   width 542px
   height 100%
