@@ -5,23 +5,19 @@ tags: Node.js
 date: 
 ---
 
-
-
 ## 1. HTTP协议
-
-
 
 ### 1.1 web 服务器模块 http
 
--   创建一个服务器对象app，绑定一个端口号：3000；
--   通过后台运行 ` node app.js ` ，就创建了一个web服务器；
--   浏览器请求这个服务器的地址： ` localhost:3000 ` 时，服务器就响应一段数据（` res.end ` ）给浏览器；
+*   创建一个服务器对象app，绑定一个端口号：3000；
+*   通过后台运行 ` node app.js ` ，就创建了一个web服务器；
+*   浏览器请求这个服务器的地址： ` localhost:3000 ` 时，服务器就响应一段数据（ ` res.end ` ）给浏览器；
 
 ``` js
 // 引用http系统模块
 const http = require('http');
 // 创建web服务器
-const app  = http.createServer();
+const app = http.createServer();
 // 当客户端发送请求时启用的事件函数
 // req 请求事件  res 响应事件
 app.on('request', (req, res) => {
@@ -33,30 +29,24 @@ app.listen(3000);
 console.log('web服务器启动成功，请访问：localhost:3000');
 ```
 
-
-
 Chrome--F12--Network--Headers：请求和响应报文：
 
 **Request 请求报文**
 
--   浏览器客户端告诉服务器端的事件；
--   能接收的格式，语言；
+*   浏览器客户端告诉服务器端的事件；
+*   能接收的格式，语言；
 
 **Response 响应报文**
 
--   服务器端对浏览器客户端响应的事情；
--   服务器端响应给客户端具体的数据：html文件
-
-
+*   服务器端对浏览器客户端响应的事情；
+*   服务器端响应给客户端具体的数据：html文件
 
 ### 1.2 请求报文
 
 请求方式：
 
--   GET 请求数据
--   POST 发送数据
-
-
+*   GET 请求数据
+*   POST 发送数据
 
 ### 1.3 req.method
 
@@ -71,7 +61,7 @@ req.method 获取请求的方式
 </form>
 ```
 
-服务器端接收来自浏览器客户端的数据，并响应了一段文字`res.end`：
+服务器端接收来自浏览器客户端的数据，并响应了一段文字 `res.end` ：
 
 ``` js
 // 引用http系统模块
@@ -82,19 +72,17 @@ const app = http.createServer();
 // req 请求事件  res 响应事件
 app.on('request', (req, res) => {
     // req.method 获取请求的方式
-    console.log(req.method)    
-    if(req.method == 'POST'){
+    console.log(req.method)
+    if (req.method == 'POST') {
         res.end('来自浏览器的请求方式为POST');
     } else if (req.method == 'GET') {
         res.end('来自浏览器的请求方式为GET');
-    }    
+    }
 })
 app.listen(3000);
 // 在node后台输出的文字
 console.log('web服务器启动成功，请访问：localhost:3000');
 ```
-
-
 
 ### 1.4 req.url
 
@@ -122,8 +110,6 @@ app.listen(3000);
 console.log('web服务器启动成功，请访问：localhost:3000');
 ```
 
-
-
 ### 1.5 req.headers
 
 客户端请求的报文信息
@@ -135,20 +121,14 @@ app.on('request', (req, res) => {
 })
 ```
 
-
-
 ### 1.6 响应报文
-
-
 
 ### 1.7 HTTP 响应状态码
 
--   200
--   404
--   500
--   400
-
-
+*   200
+*   404
+*   500
+*   400
 
 ### 1.8 res.writeHead
 
@@ -180,24 +160,18 @@ app.on('request', (req, res) => {
 })
 ```
 
-
-
 ## 2. HTTP请求和响应
 
 ### 2.1 请求参数
 
 客户端向服务器端发送请求时，有时需要携带一些客户信息，客户信息需要通过请求参数的形式传递到服务器端，比如登录操作。
 
-
-
 ### 2.2 GET请求参数
 
--   参数被放置在浏览器地址栏中，例如：http://localhost:3000/**?name=zhangsan&age=20**
--   参数获取需要借助系统模块url
-    -   之前我们直接使用了`req.url`获得了所有的请求参数，如`/index?name=zhangsan&qq=123456`；
-    -   如果要得到更方便的对象形式的`get参数`，可以使用`url.parse(req.url, true).query;`，将get地址解析成对象形式，如`{ name: 'zhangsan', qq: '123456' }`；
-
-
+*   参数被放置在浏览器地址栏中，例如：http://localhost:3000/?name=zhangsan&age=20
+*   参数获取需要借助系统模块url
+    -   之前我们直接使用了 `req.url` 获得了所有的请求参数，如 `/index?name=zhangsan&qq=123456` ；
+    -   如果要得到更方便的对象形式的 `get参数` ，可以使用 `url.parse(req.url, true).query;` ，将get地址解析成对象形式，如 `{ name: 'zhangsan', qq: '123456' }` ；
 
 ####  2.2.1 url.parse( ).query
 
@@ -207,34 +181,33 @@ const url = require('url');
 
 app.on('request', (req, res) => {
     // 获取请求参数
-    console.log(req.url);   // /index?name=zhangsan&qq=123455
+    console.log(req.url); // /index?name=zhangsan&qq=123455
 
     // 将请求参数交给url模块进行处理
     // parse(参1：要解析的url地址， 参2：将参数解析成对象形式)
     let params = url.parse(req.url, true).query;
 
-    console.log(params);   // { name: 'zhangsan', qq: '123455' }
-    console.log(params.name);   // params.name获取：zhangsan
-    console.log(params.qq);   // params.qq获取：123455
+    console.log(params); // { name: 'zhangsan', qq: '123455' }
+    console.log(params.name); // params.name获取：zhangsan
+    console.log(params.qq); // params.qq获取：123455
 })
 ```
 
-
-
 #### 2.2.2 url.parse( ).pathname
 
-`url.parse().pathname` 包含的是url地址的`/index`部分，前面通过url的路由没有提取get参数；
+`url.parse().pathname` 包含的是url地址的 `/index` 部分，前面通过url的路由没有提取get参数；
 
 ``` js
     let query = url.parse(req.url, true).query;
     // query:  { name: 'zhangsan', qq: '123455' }
     let pathname = url.parse(req.url, true).pathname;
     // pathname:  /index
-	// 等同于：
-	let { query, pathname } = url.parse(req.url, true);
+    // 等同于：
+    let {
+        query,
+        pathname
+    } = url.parse(req.url, true);
 ```
-
-
 
 #### 2.2.3 get请求响应页面
 
@@ -244,7 +217,10 @@ app.on('request', (req, res) => {
 
 ``` js
 app.on('request', (req, res) => {
-    let { query, pathname } = url.parse(req.url, true);
+    let {
+        query,
+        pathname
+    } = url.parse(req.url, true);
     // 设置状态码200和html格式及编码utf8
     res.writeHead(200, {
         'content-type': 'text/html;charset=utf8'
@@ -253,7 +229,7 @@ app.on('request', (req, res) => {
     // 原来：if (req.url == '/index')，如果url中有参数就无法识别
     if (pathname == '/index' || pathname == '/') {
         res.end('欢迎来到index首页！');
-    } else if(pathname == '/list') {
+    } else if (pathname == '/list') {
         res.end('欢迎来到list页面')
     } else {
         res.end('404')
@@ -263,17 +239,15 @@ app.on('request', (req, res) => {
 
 ![url中带get参数](http://mdimg.95408.com/201912201246_963.png)
 
-
-
 ### 2.3 POST请求参数
 
--   参数被放置在请求体中进行传输
--   获取POST参数需要使用data事件和end事件
--   使用querystring
+*   参数被放置在请求体中进行传输
+*   获取POST参数需要使用data事件和end事件
+*   使用querystring
 
 #### 2.3.1 form.html
 
-`form.html`： html表单通过post参数向服务器传递数据：
+`form.html` ： html表单通过post参数向服务器传递数据：
 
 ``` html
 <body>
@@ -285,23 +259,19 @@ app.on('request', (req, res) => {
 </body>
 ```
 
-
-
 #### 2.3.2 提交表单
 
 使用表单提交数据：
 
-![](http://mdimg.95408.com/201912201313_858.png?null)
-
-
+![](http://mdimg.95408.com/201912201313_858.png)
 
 #### 2.3.3 app.js
 
-`app.js`：服务器开启`nodemon app.js`后，接收来自form.html传递的post数据：
+`app.js` ：服务器开启 `nodemon app.js` 后，接收来自form.html传递的post数据：
 
->   `console.log(postParams); ` // usename=zhangsan&password=123456；
+> `console.log(postParams); ` // usename=zhangsan&password=123456；
 >
->   `console.log(querystring.parse(postParams));`   // { usename: 'zhangsan', password: '123456' }；
+> `console.log(querystring.parse(postParams));` // { usename: 'zhangsan', password: '123456' }；
 
 ``` js
 // 引用http系统模块
@@ -325,7 +295,7 @@ app.on('request', (req, res) => {
     })
     req.on('end', () => {
         // postParams 为post请求数据的字符串格式
-        console.log(postParams);  // usename=zhangsan&password=123456
+        console.log(postParams); // usename=zhangsan&password=123456
         // querystring.parse(postParams) 
         // 通过处理后得到了对象形式的post请求数据
         console.log(querystring.parse(postParams));
@@ -337,15 +307,13 @@ app.listen(3000);
 console.log('web服务器启动成功，请访问：localhost:3000');
 ```
 
-
-
 ## 3. 路由
 
-之前，我们在浏览器输入`localhost:3000/index`，需要响应到`index`页面上的内容；
+之前，我们在浏览器输入 `localhost:3000/index` ，需要响应到 `index` 页面上的内容；
 
-输入`localhost:3000/list`，需要响应到`list`上的数据；
+输入 `localhost:3000/list` ，需要响应到 `list` 上的数据；
 
->路由是指客户端请求地址与服务器端程序代码的对应关系。简单的说，就是请求什么响应什么。
+> 路由是指客户端请求地址与服务器端程序代码的对应关系。简单的说，就是请求什么响应什么。
 
 ![路由](http://mdimg.95408.com/201912201325_932.png)
 
@@ -353,11 +321,14 @@ console.log('web服务器启动成功，请访问：localhost:3000');
 
 ``` js
 app.on('request', (req, res) => {
-    let { query, pathname } = url.parse(req.url, true);
+    let {
+        query,
+        pathname
+    } = url.parse(req.url, true);
 
     if (pathname == '/index' || pathname == '/') {
         res.end('index页面数据');
-    } else if(pathname == '/list') {
+    } else if (pathname == '/list') {
         res.end('list页面数据')
     } else {
         res.end('404')
@@ -366,8 +337,6 @@ app.on('request', (req, res) => {
 ```
 
 以上是简单的路由代码，但没有体现客户端的get、post请求判断；
-
-
 
 #### 3.1 判断为get请求的路由
 
@@ -405,13 +374,9 @@ app.listen(3000);
 console.log('服务器启动成功');
 ```
 
-![](http://mdimg.95408.com/201912201346_522.png?null)
-
-
+![](http://mdimg.95408.com/201912201346_522.png)
 
 ## 4. 静态资源
-
-
 
 将客户端浏览器请求的路径，转换为服务器实现静态文件路径：
 
@@ -430,7 +395,7 @@ app.on('request', (req, res) => {
     // res.end(pathname);  // /index
     const dirpath = path.join(__dirname, 'public' + pathname);
     // 响应path拼接的绝对路径
-    res.end(dirpath);   // D:\doc\1218\route\public\index
+    res.end(dirpath); // D:\doc\1218\route\public\index
 })
 
 app.listen(3000);
@@ -439,16 +404,14 @@ console.log('服务器启动成功');
 
 ![](http://mdimg.95408.com/201912201407_769.png)
 
-我们通过拼接得到了文件的绝对路径`d:\doc\1218\route\public\index`，可以通过`fs`模块读取，响应给客户端：
-
-
+我们通过拼接得到了文件的绝对路径 `d:\doc\1218\route\public\index` ，可以通过 `fs` 模块读取，响应给客户端：
 
 ### 4.1 读取静态.html文件
 
--   客户端发送请求`localhost:3000/index`，得到请求路径`/index`；
--   服务器端`path.join()`拼接出服务器本地绝对地址`d:\doc\1218\route\public\index`；
--   在绝对地址下有对应的 `index.html`文件时，通过`fs.readFile`读取后响应给客户端；
--   浏览器就打开了这个`index.html`的首页文件；
+*   客户端发送请求 `localhost:3000/index` ，得到请求路径 `/index` ；
+*   服务器端 `path.join()` 拼接出服务器本地绝对地址 `d:\doc\1218\route\public\index` ；
+*   在绝对地址下有对应的 `index.html` 文件时，通过 `fs.readFile` 读取后响应给客户端；
+*   浏览器就打开了这个 `index.html` 的首页文件；
 
 ``` js
 const fs = require('fs');
@@ -459,7 +422,7 @@ app.on('request', (req, res) => {
     // res.end(realpath);   // d:\doc\1218\route\public\index
     fs.readFile(realpath, (err, result) => {
         // 读取失败响应文字
-        if(err != null) {
+        if (err != null) {
             res.end('文件读取失败');
             return;
         }
@@ -469,19 +432,15 @@ app.on('request', (req, res) => {
 })
 ```
 
-![](http://mdimg.95408.com/201912201435_163.png?null)
-
-
+![](http://mdimg.95408.com/201912201435_163.png)
 
 ### 4.2 请求根目录至首页文件
 
-当客户请求根目录`localhost:3000`时，跳转到`localhost:3000/index`：
+当客户请求根目录 `localhost:3000` 时，跳转到 `localhost:3000/index` ：
 
 ``` js
 pathname = pathname == '/' ? '/index' : pathname;
 ```
-
-
 
 ### 4.3 指定返回资源的类型 mime
 
@@ -492,11 +451,11 @@ app.on('request', (req, res) => {
     let pathname = url.parse(req.url).pathname;
     pathname = pathname == '/' ? '/index' : pathname;
     let realpath = path.join(__dirname, 'public', pathname);
-	
+
     let type = mime.getType(realpath);
 
     fs.readFile(realpath, (err, result) => {
-        if(err != null) {
+        if (err != null) {
             res.end('文件读取失败');
             return;
         }
@@ -509,9 +468,7 @@ app.on('request', (req, res) => {
 })
 ```
 
-![](http://mdimg.95408.com/201912201449_374.png?null)
-
-
+![](http://mdimg.95408.com/201912201449_374.png)
 
 ## 5. 异步API
 
@@ -520,7 +477,7 @@ app.on('request', (req, res) => {
 同步API：只有当前API执行完成后，才能继续执行下一个API；
 
 ``` js
-console.log('1'); 
+console.log('1');
 console.log('2');
 console.log('3');
 ```
@@ -530,8 +487,9 @@ console.log('3');
 ``` js
 console.log('1');
 setTimeout(
-   () => { console.log('3');
-}, 2000);
+    () => {
+        console.log('3');
+    }, 2000);
 console.log('2');
 ```
 
@@ -541,20 +499,22 @@ console.log('2');
 
 ``` js
 // 同步
-function sum (n1, n2) { 
+function sum(n1, n2) {
     return n1 + n2;
-} 
-const result = sum (10, 20);   // 30
+}
+const result = sum(10, 20); // 30
 
 // 异步
-function getMsg () { 
-    setTimeout(function () { 
-        return { msg: 'Hello Node.js' }
+function getMsg() {
+    setTimeout(function() {
+        return {
+            msg: 'Hello Node.js'
+        }
     }, 2000);
     // 异步不会等待，直接会在此执行 return undefined
     // 2秒后才后返回msg，但此时值早已拿到，并输出了
 }
-const msg = getMsg ();   // undefined
+const msg = getMsg(); // undefined
 ```
 
 同步API和异步API的执行顺序不同：
@@ -563,25 +523,27 @@ const msg = getMsg ();   // undefined
 
 ``` js
 // 同步：
-for (var i = 0; i < 100000; i++) { 
+for (var i = 0; i < 100000; i++) {
     console.log(i);
 }
 console.log('for循环后面的代码');
 // 先执行10万次，再输出最后一句话
 
 // 异步：
-console.log('代码开始执行'); 
-setTimeout(() => { console.log('2秒后执行的代码')}, 2000);
-setTimeout(() => { console.log('0秒后执行的代码')}, 0); 
+console.log('代码开始执行');
+setTimeout(() => {
+    console.log('2秒后执行的代码')
+}, 2000);
+setTimeout(() => {
+    console.log('0秒后执行的代码')
+}, 0);
 console.log('代码结束执行');
 // 输出顺序：
-    // 代码开始执行
-    // 代码结束执行
-    // 0秒后执行的代码
-    // 2秒后执行的代码
+// 代码开始执行
+// 代码结束执行
+// 0秒后执行的代码
+// 2秒后执行的代码
 ```
-
-
 
 ### 5.2 Node.js 异步API (回调函数)
 
@@ -604,8 +566,6 @@ app.on('request', (req, res) => {
 
 如果有多层回调函数，需要一层一层的嵌套，影响代码维护；
 
-
-
 ### 5.3 Promise
 
 Promise解决Node.js异步编程中回调地狱的问题；
@@ -620,6 +580,7 @@ function p1() {
         })
     })
 }
+
 function p2() {
     return new Promise((resolve, reject) => {
         fs.readFile('./2.txt', 'utf8', (err, result) => {
@@ -627,6 +588,7 @@ function p2() {
         })
     })
 }
+
 function p3() {
     return new Promise((resolve, reject) => {
         fs.readFile('./3.txt', 'utf8', (err, result) => {
@@ -646,15 +608,13 @@ p1().then((r1) => {
 })
 ```
 
-![](http://mdimg.95408.com/201912201630_672.png?null)
-
-
+![](http://mdimg.95408.com/201912201630_672.png)
 
 ## 6. 异步函数 async
 
 ``` js
 const fn = async () => {};
-async function fn () {}
+async function fn() {}
 ```
 
 让我们将异步代码写成同步的形式，让代码不再有回调函数嵌套，使代码变得清晰明了。
@@ -666,16 +626,14 @@ async function fn() {
 }
 // console.log(fn());   // Promise { 123 }
 
-fn().then(function (data) {
-    console.log(data);   // 123  
+fn().then(function(data) {
+    console.log(data); // 123  
     // return替代了resolve 用then获取
-}).catch(function (err) {
-    console.log(err);   // 错误信息txt  
+}).catch(function(err) {
+    console.log(err); // 错误信息txt  
     // throw替代了reject 用catch获取
 })
 ```
-
-
 
 ### 6.1 async 关键字
 
@@ -685,8 +643,6 @@ fn().then(function (data) {
 4. 在异步函数内部使用throw关键字抛出程序异常
 5. 调用异步函数再链式调用then方法获取异步函数执行结果
 6. 调用异步函数再链式调用catch方法获取异步函数执行的错误信息
-
-
 
 ### 6.2 await 关键字
 
@@ -721,13 +677,11 @@ run();
 // 3.txt
 ```
 
-
-
 ### 6.3 顺序读取3个文件
 
--   使用async异步函数的方法按顺序读取3个文件：
--   const readFile = promisify(fs.readFile)   // 调用promisify方法改造了现有的异步API，让其返回promise对象；
--   从而支持异步函数语法；
+*   使用async异步函数的方法按顺序读取3个文件：
+*   const readFile = promisify(fs.readFile)   // 调用promisify方法改造了现有的异步API，让其返回promise对象；
+*   从而支持异步函数语法；
 
 ``` js
 const fs = require('fs');
@@ -736,7 +690,7 @@ const promisify = require('util').promisify;
 // 调用promisify方法改造了现有的异步API，让其返回promise对象
 const readFile = promisify(fs.readFile);
 
-async function run () {
+async function run() {
     let r1 = await readFile('./1.txt', 'utf8');
     // 通过promisify处理的新reafFile方法，不用写回调函数，直接使用await
     let r2 = await readFile('./2.txt', 'utf8');
@@ -746,12 +700,11 @@ async function run () {
     console.log(r3);
 }
 run();
-    // D: \doc\1219 > node 2.js
-    // 1.txt内容
-    // 2.txt内容
-    // 3.txt内容
+// D: \doc\1219 > node 2.js
+// 1.txt内容
+// 2.txt内容
+// 3.txt内容
 ```
 
-
-
 以上。
+

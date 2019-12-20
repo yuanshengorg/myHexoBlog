@@ -150,7 +150,7 @@ index_bg_img:
 other_bg_img:
 
 # 点击图片放大样式
-img_resize: photoSwipe
+img_resize: default
 # 可选值：photoSwipe
 # default: 默认(自己写的简单的放大)
 # photoSwipe: 使用photoSwipe插件
