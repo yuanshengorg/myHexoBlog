@@ -18,7 +18,7 @@ link:
     linkedin:
     instagram:
     reddit: 
-    weibo: http://www.95408.com
+    weibo: 
     jianshu: 
     zhihu: 
     csdn:
@@ -129,7 +129,7 @@ article_bg_img:
   opacity: 0.3 # 背景图透明度，范围 0 ～ 1
 
 # 列表样式
-list: normal
+list: thread
 # normal : 普通样式
 # thread : 列表外圈有一个线框
 
@@ -139,7 +139,7 @@ blockquote: github
 # bracket : 类似于左右两个大括号的样式
 
 # table 的样式
-table: green_title
+table: green
 # 为空时类似github的table样式
 # green 绿色样式
 # green_title 头部为青色的table样式
@@ -150,7 +150,7 @@ index_bg_img:
 other_bg_img:
 
 # 点击图片放大样式
-img_resize: 
+img_resize: photoSwipe
 # 可选值：photoSwipe
 # default: 默认(自己写的简单的放大)
 # photoSwipe: 使用photoSwipe插件
@@ -187,7 +187,7 @@ highlight:
 
 # MathJax 数学公式支持
 mathjax:
-  on: true #是否启用
+  on: false #是否启用
   per_page: false # 若只渲染单个页面，此选项设为false，页面内加入 mathjax: true
 
 # Mermaid 支持
