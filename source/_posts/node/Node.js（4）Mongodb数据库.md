@@ -1,8 +1,8 @@
 ---
-title: Node.js与数据库Mongodb
+title: Node.js（4）Mongodb数据库
 categories: node
 tags: Mongodb
-date: 
+date: 2019-12-04 00:00
 ---
 
 ## MongoDB
@@ -29,9 +29,15 @@ date:
 
 > mongoimport –d 数据库名称 –c 集合名称 –file 要导入的数据文件 (注意：是 - - file)
 >
-> mongoimport - d playground - c users--file. / user.json
+> mongoimport - d playground - c users --file./ user.json
 
-[使用Mongoose查询数据库一直为空数组？](https://www.jianshu.com/p/775088bb8f92)
+**其他：**
+
+> 创建的数据库会自动加 `s` ；
+>
+> `const User = mongoose.model('User', userSchema);` 数据库中的集合名称实际为 `users` ；
+>
+> [使用Mongoose查询数据库一直为空数组？](https://www.jianshu.com/p/775088bb8f92)
 
 ###  MongoDB Compass 可视化
 
@@ -75,7 +81,7 @@ mongoose.connect('mongodb://localhost/playground', {
 // 数据库连接成功
 ```
 
-### 创建集合
+## 创建集合
 
 *   一个集合就是一个数据库表单，如excel中的表单；
 *   创建集合分为两步，一是对**对集合设定规则**，二是**创建集合**；
@@ -159,7 +165,166 @@ mongoimport - d playground - c users--file. / user.json
 
 ![图片错误：应是users](http://mdimg.95408.com/201912202255_2.png)
 
-## 增删改查
+### mongoose验证
+
+在创建集合规则时，可以设置当前字段的验证规则，验证失败就则输入插入失败；
+
+获取错误信息：error.errors['字段名称'].message
+
+*   required: true   必传字段
+*   minlength：3   字符串最小长度
+*   maxlength: 20   字符串最大长度
+*   min: 2   数值最小为2
+*   max: 100   数值最大为100
+*   enum: ['html'**, ** 'css'**, ** 'javascript'**, ** 'node.js']
+*   trim: true   去除字符串两边的空格
+*   validate:   自定义验证器
+*   default:   默认值
+
+``` js
+const postSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        // 必选字段
+        required: [true, '请传入文章标题'],
+        // 字符串的最小长度
+        minlength: [2, '文章长度不能小于2'],
+        // 字符串的最大长度
+        maxlength: [5, '文章长度最大不能超过5'],
+        // 去除字符串两边的空格
+        trim: true
+    },
+    age: {
+        type: Number,
+        // 数字的最小范围
+        min: 18,
+        // 数字的最大范围
+        max: 100
+    },
+    publishDate: {
+        type: Date,
+        // 默认值
+        default: Date.now
+    },
+    category: {
+        type: String,
+        // 枚举 列举出当前字段可以拥有的值
+        enum: {
+            values: ['html', 'css', 'javascript', 'node.js'],
+            message: '分类名称要在一定的范围内才可以'
+        }
+    },
+    author: {
+        type: String,
+        validate: {
+            validator: v => {
+                // 返回布尔值
+                // true 验证成功
+                // false 验证失败
+                // v 要验证的值
+                return v && v.length > 4
+            },
+            // 自定义错误信息
+            message: '传入的值不符合验证规则'
+        }
+    }
+});
+
+const Post = mongoose.model('Post', postSchema);
+
+Post.create({
+        title: 'aa',
+        age: 60,
+        category: 'java',
+        author: 'bd'
+    })
+    .then(result => console.log(result))
+    .catch(error => {
+        // 获取错误信息对象
+        const err = error.errors;
+        // 循环错误信息对象
+        for (var attr in err) {
+            // 将错误信息打印到控制台中
+            console.log(err[attr]['message']);
+        }
+    })
+```
+
+### 集合关联
+
+通常不同集合的数据之间是有关系的，例如文章信息和用户信息存储在不同集合中，但文章是某个用户发表的，要查询文章的所有信息包括发表用户，就需要用到集合关联。
+
+*   使用id对集合进行关联
+*   使用populate方法进行关联集合查询
+
+``` js
+// 用户集合
+const User = mongoose.model('User', new mongoose.Schema({
+    name: {
+        type: String
+    }
+}));
+// 文章集合
+const Post = mongoose.model('Post', new mongoose.Schema({
+    title: {
+        type: String
+    },
+    // 使用ID将文章集合和作者集合进行关联
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
+}));
+//联合查询
+Post.find()
+    .populate('author')
+    .then((err, result) => console.log(result));
+```
+
+文章关联到作者：
+
+``` js
+// 引入mongoose第三方模块 用来操作数据库
+const mongoose = require('mongoose');
+// 数据库连接
+mongoose.connect('mongodb://localhost/playground', {
+        useNewUrlParser: true
+    })
+    // 连接成功
+    .then(() => console.log('数据库连接成功'))
+    // 连接失败
+    .catch(err => console.log(err, '数据库连接失败'));
+
+// 用户集合规则
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    }
+});
+// 文章集合规则
+const postSchema = new mongoose.Schema({
+    title: {
+        type: String
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
+});
+// 用户集合
+const User = mongoose.model('User', userSchema);
+// 文章集合
+const Post = mongoose.model('Post', postSchema);
+
+// 创建用户
+// User.create({name: 'itheima'}).then(result => console.log(result));
+// 创建文章
+// Post.create({titile: '123', author: '5c0caae2c4e4081c28439791'}).then(result => console.log(result));
+Post.find().populate('author').then(result => console.log(result))
+```
+
+## 查/改/删
 
 ### 查询文档
 

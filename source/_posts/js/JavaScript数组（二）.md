@@ -5,8 +5,6 @@ tags: js
 date: 
 ---
 
-
-
 ## 一、遍历数组
 
 ### 1、for循环遍历数组
@@ -81,7 +79,6 @@ arr.forEach(function(value, index, array) {
 })
 console.log(sum); // 6
 ```
-
 
 ## 二、数组迭代
 
