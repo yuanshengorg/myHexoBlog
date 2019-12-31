@@ -20,12 +20,10 @@ D:\hexo>hexo s
  (line number probably different from source)
 ```
 
-原因：不在在非代码块之外显示：
+原因：不在在非代码块之外显示 `双花括号` ：
 
 ``` js
-{
-    {}
-}
+{{}}
 ```
 
 ------
