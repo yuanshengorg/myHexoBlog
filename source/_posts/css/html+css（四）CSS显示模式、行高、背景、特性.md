@@ -12,7 +12,14 @@ date:
 ### 块级元素 block-level
 
 ``` css
-常见的块元素有 <h1>~<h6>、 <p>、 <div>、 <ul>、 <ol>、 <li>等， 其中<div>标签是最典型的块元素。
+常见的块元素有 
+<h1>~<h6>、 
+<p>、 
+<div>、 
+<ul>、 
+<ol>、 
+<li>等， 
+其中<div>标签是最典型的块元素。
 ```
 
 *   独占一行
@@ -26,7 +33,18 @@ date:
 ### 行内元素 inline-level
 
 ``` css
-常见的行内元素有 <a>、 <strong>、 <b>、 <em>、 <i>、 <del>、 <s>、 <ins>、 <u>、 <span>等， 其中<span>标签最典型的行内元素。有的地方也成内联元素
+常见的行内元素有 
+<a>、 
+<strong>、 
+<b>、 
+<em>、 
+<i>、 
+<del>、 
+<s>、 
+<ins>、 
+<u>、 
+<span>等， 
+其中<span>标签最典型的行内元素。有的地方也成内联元素
 ```
 
 *   相邻行内元素在一行上，一行可以显示多个
@@ -40,7 +58,11 @@ date:
 ### 行内块元素 inline-block
 
 ``` css
-在行内元素中有几个特殊的标签 <img />、 <input />、 <td>， 可以对它们设置宽高和对齐属性，有些资料可能会称它们为行内块元素。
+在行内元素中有几个特殊的标签 
+<img />、 
+<input />、 
+<td>， 
+可以对它们设置宽高和对齐属性，有些资料可能会称它们为行内块元素。
 ```
 
 *   和相邻行内元素（行内块）在一行上, 但是之间会有空白缝隙。一行可以显示多个
@@ -97,7 +119,7 @@ date:
 
 ``` css
 background-color: red;
-默认的值是 transparent 透明的
+/* 默认的值是 transparent 透明的  */
 ```
 
 ### 背景图片 background-image
@@ -130,7 +152,8 @@ background-repeat : repeat | no-repeat | repeat-x | repeat-y
 ### 背景位置 background-position
 
 ``` css
-background-position : length || length background-position : position || position
+background-position : length || length 
+background-position : position || position
 ```
 
 | 参数     |                              值                              |
@@ -178,10 +201,9 @@ div {
 
 背景附着就是解释背景是滚动的还是固定的
 
-```】
-background-attachment : scroll | fixed 
-
-``` 
+```css
+background-attachment: scroll | fixed
+```
 
 | 参数   |           作用           |
 | ------ | :----------------------: |
@@ -267,7 +289,7 @@ background: rgba(0, 0, 0, 0.3);
 
 | 标签选择器             | 计算权重公式 |
 | ---------------------- | ------------ |
-| 继承或者 *             | 0, 0, 0, 0      |
+| 继承或者             | 0, 0, 0, 0      |
 | 每个元素（标签选择器） | 0, 0, 0, 1      |
 | 每个类、伪类           | 0, 0, 1, 0      |
 | 每个ID                 | 0, 1, 0, 0      |
@@ -290,4 +312,3 @@ background: rgba(0, 0, 0, 0.3);
 数位之间没有进制 比如说： 0, 0, 0, 5 + 0, 0, 0, 5 =0, 0, 0, 10 而不是 0, 0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。
 
 以上。
-

@@ -28,12 +28,14 @@ date:
 将CSS代码集中写在HTML文档的head头部标签中，并且用style标签定义；
 
 ``` css
-<head><style>div {
-    color: red;
-    font-size: 12px;
-}
-
-</style></head><body><div>内容</div></body>
+<head>
+    <style>
+        div {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
 ```
 
 ### 外部样式表（外链式）
@@ -74,9 +76,16 @@ h2 {
 说明：
 
 ``` css
-h2 —— 选择器 指定CSS样式作用于哪个HTML标签 花括号内是对该对象设置的具体样式 color: red;
-—— 声明 属性和属性值以“键值对”形式出现 color —— 属性 设置的样式属性，例如字体大小、文本颜色等 red —— 值 样式属性的值 属性和值之间 : 连接 多个“键值对”之间;
-进行区分
+h2 —— 选择器 
+	指定CSS样式作用于哪个HTML标签 花括号内是对该对象设置的具体样式 
+color: red; —— 声明 
+	属性和属性值以“键值对”形式出现 
+color —— 属性 
+	设置的样式属性，例如字体大小、文本颜色等 
+red —— 值 
+	样式属性的值 
+属性和值之间用 : 连接
+多个“键值对”之间用 ; 进行区分
 ```
 
 ## CSS基础选择器
@@ -94,7 +103,6 @@ h2 —— 选择器 指定CSS样式作用于哪个HTML标签 花括号内是对�
     属性1: 属性值1;
     属性2: 属性值2;
 }
-
 div {
     font-size: 18px;
 }
@@ -107,7 +115,8 @@ div {
 可以有多个类名，类名中间用空格隔开；
 
 ``` css
-<div class='abc'></div>.abc {
+<div class='abc'></div>
+.abc {
     color: red;
 }
 ```
@@ -117,7 +126,8 @@ div {
 元素的id值是唯一的，只能对应于文档中某一个具体的元素；
 
 ``` css
-<div id="abc"></div>#abc {
+<div id="abc"></div>
+#abc {
     color: red;
 }
 ```
@@ -127,9 +137,7 @@ div {
 会匹配页面所有的元素，降低页面响应速度，不建议随便使用；
 
 ``` css
-
 * {
-
     margin: 0;
     /* 定义外边距*/
     padding: 0;
@@ -159,8 +167,8 @@ div {
 *   用来选择元素或元素组的**子孙后代**
 *   其写法就是把外层标签写在前面，内层标签写在后面，中间用**空格**分隔 
 
-``` 
-父级 子级{属性:属性值;属性:属性值;}
+``` css
+/* 父级 子级{属性:属性值;属性:属性值;} */
 .abc h3 {
 	color:red;
 	font-size:16px;
@@ -177,12 +185,17 @@ div {
 *   父级标签写在前面，子级标签写在后面，中间跟一个 `>` 进行连接
 
 ``` css
-.abc>h3 {
+.abc > h3 {
     color: red;
     font-size: 14px;
 }
 
-<div class="abc"><h3></h3>只能选择此处的h3 <div><h3></h3>不能选择非子代（孙子）的h3 </div></div>
+<div class="abc">
+    <h3>aaa</h3>   /* 只能选择此处的h3 */ 
+    <div>
+    	<h3>bbb</h3>   /* 不能选择非子代（孙子）的h3 */
+    </div>
+</div>
 ```
 
 ### 交集选择器
@@ -192,7 +205,8 @@ div {
 两个选择器之间**不能有空格**，如 h3.special，使用较少；
 
 ``` css
-p.one 选择的是： 类名为 .one 的 段落标签。
+p.one
+选择的是：类名为 .one 的段落标签
 ```
 
 ### 并集选择器
@@ -207,7 +221,8 @@ p.one 选择的是： 类名为 .one 的 段落标签。
     color: red;
 }
 
-<div class="abc"></div><div id="xyz"></div>
+<div class="abc"></div>
+<div id="xyz"></div>
 ```
 
 ### 链接伪类选择器
@@ -234,7 +249,6 @@ a {
     font-size: 16px;
     color: gray;
 }
-
 a:hover {
     /* :hover 是链接伪类选择器 鼠标经过 */
     color: red;
@@ -271,7 +285,7 @@ p {
 *   中文字体、字体中有空格或特殊符号的，用 双引号 包含；
 *   尽量写Unicode编码字体；
 
-``` 
+``` css
 p {
 	font-family: Arial,"Microsoft Yahei", "微软雅黑";
 }
@@ -342,7 +356,6 @@ font-style属性用于定义字体风格，如设置斜体、倾斜或正常字�
 body {
     font-size: 16px;
 }
-
 .title {
     /* 字体大小 */
     font-size: 20px;
@@ -358,13 +371,11 @@ body {
     /* font: font-style  font-weight  font-size/line-height  font-family;*/
     font: italic 700 20px "微软雅黑";
 }
-
 h1 {
     /*让粗体的不加粗*/
     /*font-weight: normal;  400 等价于 normal*/
     font-weight: 400;
 }
-
 em {
     /* 让倾斜的字体 不倾斜 */
     font-style: normal;
@@ -439,3 +450,4 @@ text-decoration   通常我们用于给链接修改装饰效果
 | text-indent     | 首行缩进 | 通常我们用于段落首行缩进2个字的距离   text-indent: 2em; |
 | text-decoration | 文本修饰 | 记住 添加 下划线  underline  取消下划线  none           |
 
+以上。

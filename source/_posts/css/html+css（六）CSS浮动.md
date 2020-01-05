@@ -17,7 +17,8 @@ date:
 ![行内块 inline-block](http://mdimg.95408.com/201912311716_936.png?null)
 
 ``` css
-行内块（inline-block）可以实现多个元素一行显示，但是中间会有空白缝隙 div {
+/* 行内块（inline-block）可以实现多个元素一行显示，但是中间会有空白缝隙 */
+div {
     display: inline-block;
     width: 200px;
     height: 200px;
@@ -79,21 +80,22 @@ date:
 ![](http://mdimg.95408.com/201912311719_847.png?null)
 
 ``` css
-<style>.one {
+<style>
+.one {
     /*不是标准流了， 漂浮起来， 浮在 标准流的上面*/
     float: left;
     width: 200px;
     height: 200px;
     background-color: pink;
 }
-
 .two {
     width: 300px;
     height: 300px;
     background-color: purple;
 }
-
-</style><div class="one"></div><div class="two"></div>
+</style>
+<div class="one"></div>
+<div class="two"></div>
 ```
 
 ### 浮动和标准流的父盒子搭配
@@ -119,7 +121,6 @@ date:
     border: 20px solid red;
     padding: 20px;
 }
-
 .son {
     float: right;
     width: 200px;
@@ -151,7 +152,6 @@ date:
         height: 200px;
         background-color: pink;
     }
-
     .two {
         width: 300px;
         height: 300px;
@@ -189,7 +189,6 @@ date:
         width: 500px;
         background-color: pink;
     }
-
     /* a b 浮动了，不占有位置，而父级又没有高度，所以 two 就到底下去了 */
     .a {
         float: left;
@@ -197,14 +196,12 @@ date:
         height: 200px;
         background-color: purple;
     }
-
     .b {
         float: left;
         width: 250px;
         height: 250px;
         background-color: skyblue;
     }
-
     .two {
         width: 700px;
         height: 400px;
@@ -229,12 +226,13 @@ date:
 > 右图：将粉色父例子 清除浮动 `.one{overflow: hidden;}` ，灰色下级盒子可以正常显示了；
 
 ``` css
-左图： .one {
+/* 左图 */
+.one {
     width: 300px;
     background-color: pink;
 }
-
-右图： .one {
+/* 右图 */
+.one {
     width: 300px;
     background-color: pink;
     overflow: hidden;
@@ -244,13 +242,17 @@ date:
 ### 额外标签法
 
 ``` css
-W3C推荐的做法，通过在浮动元素末尾添加一个空的标签： <div style=”clear:both”></div>也可以是其他标签如 br 等都可以。
+W3C推荐的做法，
+通过在浮动元素末尾添加一个空的标签： 
+<div style=”clear:both”></div>
+也可以是其他标签如 br 等都可以。
 ```
 
 ### 添加overflow属性
 
 ``` css
-可以给父级添加： overflow 为 hidden| auto| scroll 都可以实现。 .father {
+可以给父级添加： overflow 为 hidden| auto| scroll 都可以实现。 
+.father {
     overflow: hidden;
 }
 ```
@@ -268,7 +270,6 @@ W3C推荐的做法，通过在浮动元素末尾添加一个空的标签： <div
     visibility: hidden;
     clear: both;
 }
-
 .clearfix {
     *zoom: 1;
     /* ie6 ie7 专门清除浮动的样式 */
@@ -286,11 +287,9 @@ W3C推荐的做法，通过在浮动元素末尾添加一个空的标签： <div
     content: "";
     display: table;
 }
-
 .clearfix:after {
     clear: both;
 }
-
 .clearfix {
     *zoom: 1;
 }

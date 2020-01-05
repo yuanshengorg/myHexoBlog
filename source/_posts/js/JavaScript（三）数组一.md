@@ -1,5 +1,5 @@
 ---
-title: JavaScript 数组（一）
+title: JavaScript（三）数组一
 categories: JavaScript
 tags: js
 date: 
@@ -7,21 +7,14 @@ date:
 
 ## 数组
 
-1、数组是一种特殊的变量，它能够一次存放一个以上的值。
-
-2、数组是一种特殊类型的对象，在 JavaScript 中对数组使用 typeof 运算符会返回 "object"。JavaScript 数组最好以数组来描述。
-
-4、数组使用数字来访问其“元素”，对象使用名称来访问其“成员”。数组和对象的区别：数组使用数字索引、象使用命名索引。数组是特殊类型的对象，具有数字索引。
-
-`var person = ["Bill", "Gates", 62]; ` 使用： ` person[0] ` 
-
-`var person = {firstName:"John", lastName:"Doe", age:46}; ` 使用： ` person.firstName ` 
-
-5、如果希望元素名为字符串（文本）则应该使用对象、如果希望元素名为数字则应该使用数组。
-
-6、可以在数组保存对象、函数、甚至是数组；
-
-`myArray[0] = Date.now;  myArray[1] = myFunction;  myArray[2] = myCars;` 
+-   数组是一种特殊的变量，它能够一次存放一个以上的值。
+-   数组是一种特殊类型的对象，在 JavaScript 中对数组使用 typeof 运算符会返回 "object"。JavaScript 数组最好以数组来描述。
+-   数组使用数字来访问其“元素”，对象使用名称来访问其“成员”。数组和对象的区别：数组使用数字索引、象使用命名索引。数组是特殊类型的对象，具有数字索引。
+    -   `var person = ["Bill", "Gates", 62]; ` 使用： ` person[0] ` 
+    -   `var person = {firstName:"John", lastName:"Doe", age:46}; ` 使用： ` person.firstName ` 
+-   如果希望元素名为字符串（文本）则应该使用对象、如果希望元素名为数字则应该使用数组。
+-   可以在数组保存对象、函数、甚至是数组；
+    -   `myArray[0] = Date.now;  myArray[1] = myFunction;  myArray[2] = myCars;` 
 
 ### 1、定义数组
 
@@ -48,7 +41,21 @@ var cars = new Array("Saab", "Volvo", "BMW");
 console.log(cars[0]); // Saab
 ```
 
-### 4、改变数组元素
+### 4、遍历数据
+
+把数组中的每个元素从头到尾都访问一次（类似学生的点名），可以通过 for 循环索引遍历数组中的每一项；
+
+``` js
+var arr = ['red','green', 'blue'];
+for (var i = 0; i < arr.length; i++) {
+    console.log(arrStus[i]);
+}
+// red
+// green
+// blue
+```
+
+### 5、改变数组元素
 
 通过使用它们的索引号来访问、更改数组元素
 
@@ -58,7 +65,7 @@ cars[0] = 'abc'
 console.log(cars[0]); // abc
 ```
 
-### 5、访问完整数组
+### 6、访问完整数组
 
 ``` js
 var cars = ["Audi", "BMW", "porsche"];

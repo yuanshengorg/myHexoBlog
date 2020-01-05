@@ -23,14 +23,14 @@ date:
 基本的三对HTML标签，分别为 `table` 、 `tr` 、 `td` ，他们是创建表格的基本标签，缺一不可；
 
 ``` html
-一个表格
+<!-- 一个表格 -->
 <table>
-    <tr> 表格中的第一行
+    <tr> 	<!-- 表格中的第一行 -->
         <td>第一行第一格 每个td就是一行中的每一格</td>
         <td>第一行第二格 每个td就是一行中的每一格</td>
     </tr>
 
-    <tr> 表格中的第二行
+    <tr> 	<!-- 表格中的第二行 -->
         <td>第二行第一格 每个td就是一行中的每一格</td>
         <td>第二行第二格 每个td就是一行中的每一格</td>
     </tr>
@@ -61,8 +61,8 @@ date:
 ![](http://mdimg.95408.com/201912302334_428.png?null)
 
 ``` html
-左：cellspacing="10"
-右：cellspacing="0"
+<!-- 左：cellspacing="10" -->
+<!-- 右：cellspacing="0" -->
 <table width="500" height="300" border="1" cellpadding="20" cellspacing="0" align="center">
     <tr>
         <th>姓名</th>
@@ -100,12 +100,12 @@ date:
 ``` html
 <table>
     <tr>
-        <th>姓名</th> 表头单元格th
+        <th>姓名</th> <!-- 表头单元格th -->
         <th>性别</th> 
         <th>电话</th> 
     </tr>
     <tr>
-        <td>张三</td> 普通单元格td
+        <td>张三</td> <!-- 普通单元格td -->
         <td>男</td> 
         <td>28</td> 
     </tr>
@@ -177,8 +177,8 @@ date:
         <td>个人简历</td>
         <!-- 将第四行tr的第二、三、四个格td合并 -->
         <td colspan="3">个人简历</td>
-        <!-- <td>个人简历</td>
-<td>个人简历</td> -->
+        <!-- <td>个人简历</td> -->
+	    <!-- <td>个人简历</td> -->
     </tr>
 </table>
 ```
@@ -190,7 +190,7 @@ date:
 
 ``` html
 <table border="1" cellspacing="0" align="center" width="500">
-    题头 thead
+    <!-- 题头 thead -->
     <thead>
         <tr>
             <th>姓名</th>
@@ -198,7 +198,7 @@ date:
             <th>年龄</th>
         </tr>
     </thead>
-    正文 tbody
+    <!-- 正文 tbody -->
     <tbody>
         <tr>
             <td>刘德华</td>
@@ -206,7 +206,7 @@ date:
             <td>55</td>
         </tr>
     </tbody>
-    脚注 tfoot
+    <!-- 脚注 tfoot -->
     <tfoot>
         <tr>
             <td>信息地址</td>
@@ -312,13 +312,13 @@ date:
 
 ``` html
 用户名: <input type="text" />
-密 码：<input type="password" />
+密  码：<input type="password" />
 ```
 
 #### 2.value属性   值
 
 ``` html
-用户名:<input type="text" name="username" value="请输入用户名">
+用户名: <input type="text" name="username" value="请输入用户名">
 ```
 
 *   value 默认的文本值。 有些表单想刚打开页面就默认显示几个文字，就可以通过这个value 来设置。
@@ -326,7 +326,7 @@ date:
 #### 3.name属性
 
 ``` html
-用户名:<input type="text" name=“username” />
+用户名: <input type="text" name=“username” />
 ```
 
 name表单的名字， 这样，后台可以通过这个name属性找到这个表单。  页面中的表单很多，name主要作用就是用于区别不同的表单。
@@ -336,8 +336,8 @@ name表单的名字， 这样，后台可以通过这个name属性找到这个�
 *   radio  如果是一组，我们必须给他们命名相同的名字 name   这样就可以多个选其中的一个啦
 
 ``` html
-<input type="radio" name="sex" />男
-<input type="radio" name="sex" />女
+<input type="radio" name="sex" /> 男
+<input type="radio" name="sex" /> 女
 ```
 
 *   name属性，我们现在用的较少， 但是，当我们学ajax 和后台的时候，是必须的。
@@ -394,8 +394,7 @@ name表单的名字， 这样，后台可以通过这个name属性找到这个�
 <input type="image" src="images/btn.png" />
 
 <!-- type file 文件域 上传文件 -->
-上传头像:
-<input type="file" />
+上传头像: <input type="file" />
 ```
 
 ### label 标签
@@ -412,7 +411,7 @@ label 标签为 input 元素定义标注（标签）。
 
 ``` html
 <label>
-    用户名：
+    <!-- 用户名： -->
     <input type="radio" name="usename" value="请输入用户名">
 </label>
 ```
@@ -432,7 +431,7 @@ label 标签为 input 元素定义标注（标签）。
 
 ``` html
 <textarea>
-  文本内容
+  <!-- 文本内容 -->
 </textarea>
 ```
 
@@ -458,7 +457,7 @@ cols="每行中的字符数"、rows="显示的行数"，实际开发不用
     <option selected=" selected">选项1</option>
     <option>选项2</option>
     <option>选项3</option>
-    ...
+    <!-- ... -->
 </select>
 ```
 
@@ -475,7 +474,6 @@ cols="每行中的字符数"、rows="显示的行数"，实际开发不用
     <option>上海</option>
     <option>山东</option>
 </select>
-
 <!-- 城市选择 -->
 <select>
     <option>请选择城市</option>
@@ -495,7 +493,7 @@ cols="每行中的字符数"、rows="显示的行数"，实际开发不用
 
 ``` html
 <form action="url地址" method="提交方式" name="表单名称">
-    各种表单控件
+    <!-- 各种表单控件 -->
 </form>
 ```
 
@@ -523,10 +521,10 @@ cols="每行中的字符数"、rows="显示的行数"，实际开发不用
 *   元素属性值可以写上的都写上
 
 ``` html
-推荐：
+<!-- 推荐： -->
 <input type="text" />
 <input type="radio" name="name" checked="checked" />
-不推荐：
+<!-- 不推荐： -->
 <input type=text /> <input type='text' />
 <input type="radio" name="name" checked />
 ```

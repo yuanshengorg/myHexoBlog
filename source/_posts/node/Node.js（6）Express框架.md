@@ -447,22 +447,13 @@ npm install body - parser
 
 ``` js
 // ./post.html
-<
-body >
-    <
-    form action = "http://localhost:3000/add"
-method = "POST" >
-    <
-    input type = "text"
-name = "username" >
-    <
-    input type = "password"
-name = "password" >
-    <
-    input type = "submit" >
-    <
-    /form> <
-    /body>
+<body>
+    <form action = "http://localhost:3000/add" method = "POST" >
+        <input type = "text" name = "username" >
+        <input type = "password" name = "password" >
+        <input type = "submit" >
+    </form> 
+</body>
 
 // ./app.js
 const express = require('express');
@@ -507,7 +498,7 @@ app.listen(3000);
 通过Express内置的**express.static**可以方便地托管静态文件，例如img、CSS、JavaScript 文件等。
 
 ``` js
- app.use(express.static('public'));
+app.use(express.static('public'));
 ```
 
 将项目根目录下的public目录的文件，做为静态资源：
@@ -540,8 +531,7 @@ html、art模板文件中的静态资源相对路径，是相对于请求路径�
 模板文件中，外链资源要写绝对路径，就是以 `/` 开关；
 
 ``` js
-< link rel = "stylesheet"
-href = "/admin/css/base.css" >
+<link rel = "stylesheet" href = "/admin/css/base.css">
 ```
 
 子模板的相对路径，是相对当前文件；
@@ -549,11 +539,7 @@ href = "/admin/css/base.css" >
 引入的模板文件，由模板引擎解析，写相对路径；
 
 ``` js
-{
-    {
-        include './common/header'
-    }
-}
+{{ include './common/header' }}
 ```
 
 ## 模板引擎express-art-template
@@ -561,7 +547,7 @@ href = "/admin/css/base.css" >
 安装
 
 ``` js
-npm install art - template express - art - template
+npm install art-template express-art-template
 ```
 
 为了使 `art-template` 模板引擎能够更好的和Express框架配合，模板引擎官方在原art-template模板引擎的基础上封装了 `express-art-template` 。
@@ -599,21 +585,11 @@ app.listen(3000);
 // ---------------------------------------
 
 // ./views/index.art
-<
-body > {
-        {
-            msg
-        }
-    } {
-        {
-            name
-        }
-    } {
-        {
-            age
-        }
-    } <
-    /body>
+<body > 
+    {{msg}} 
+    {{name}} 
+	{{age}} 
+</body>
 ```
 
 ![](http://mdimg.95408.com/201912232016_357.png?null)
@@ -659,64 +635,32 @@ app.listen(3000);
 // ---------------------------------------
 
 // /views/index.art
-<
-body > {
-        {
-            msg
-        }
-    } // 首页msg的值
-    <
-    ul > {
-        {
-            each users
-        }
-    } <
-    li > {
-        {
-            $value.name
-        }
-    } // 张三 20   李四 30
-{
-    {
-        $value.age
-    }
-} <
-/li> {
-    {
-        /each}} <
-        /ul> <
-        /body>
+<body > 
+    {{msg}} // 首页msg的值
+    <ul> 
+        {{each users}} 
+			<li > 
+				{{ $value.name}} // 张三 20   李四 30
+				{{$value.age}} 
+			</li> 
+		{{/each}} 
+	</ul> 
+</body>
 
-        // ---------------------------------------
+// ---------------------------------------
 
-        // /views/list.art
-        <
-        body > {
-                {
-                    msg
-                }
-            } //列表页msg的值
-            <
-            ul > {
-                {
-                    each users
-                }
-            } <
-            li > {
-                {
-                    $value.name
-                }
-            } // 张三 20   李四 30
-        {
-            {
-                $value.age
-            }
-        } <
-        /li> {
-            {
-                /each}} <
-                /ul> <
-                /body>
+// /views/list.art
+<body > 
+	{{msg}} //列表页msg的值
+	<ul >
+		{{each users}} 
+            <li >
+                {{$value.name}} // 张三 20   李四 30
+                {{$value.age}} 
+            </li>
+		{{/each}}
+	</ul> 
+</body>
 ```
 
 ![](http://mdimg.95408.com/201912232035_11.png?null)

@@ -20,7 +20,7 @@ date:
 ![](http://mdimg.95408.com/201912311521_486.png?null)
 
 ``` css
-border : border-width || border-style || border-color
+border: border-width || border-style || border-color
 ```
 
 | 属性         |          作用          |
@@ -40,7 +40,7 @@ border-style边框的样式：
 
 ``` css
 border: 1px solid red;
-没有顺序
+/* 没有顺序 */
 ```
 
 ### 附：盒子边框
@@ -61,10 +61,10 @@ td {
 
 ``` css
 border-radius: 10px;
-设置10px的圆角 
+/* 设置10px的圆角 */
 
 border-radius: 50%;
-让一个正方形变成圆圈
+/* 让一个正方形变成圆圈 */
 ```
 
 ### 阴影 box-shadow
@@ -146,15 +146,15 @@ div {
     height: 200px;
     background-color: pink;
 }
-
 p {
     /* 子盒子p没有宽度 则padding不会撑开盒子*/
     height: 100px;
     background-color: purple;
     padding: 10px;
 }
-
-<div><p>aaabbbccc</p></div>
+<div>
+	<p>abc</p>
+</div>
 ```
 
 ## 外边距 margin
@@ -238,7 +238,6 @@ margin: 10px auto;
      margin-left: 50px;
      /* 插入当图片也是一个盒子 */
  }
-
  div {
      width: 400px;
      height: 400px;
@@ -252,9 +251,7 @@ margin: 10px auto;
 ### 清除元素的默认内外边距
 
 ``` css
-
 * {
-
     padding: 0;
     /* 清除内边距 */
     margin: 0;
@@ -304,7 +301,6 @@ margin: 10px auto;
         /* 3. 可以为父元素添加overflow:hidden */
         overflow: hidden;
     }
-
     .son {
         width: 100px;
         height: 100px;
@@ -324,7 +320,7 @@ margin: 10px auto;
 按照 优先使用  宽度 （width）  其次使用 内边距（padding） 再次 外边距（margin）。   
 
 ``` 
-  width >  padding  >   margin   
+width >  padding  >   margin   
 ```
 
 ## CSS规范
@@ -368,3 +364,4 @@ margin: 10px auto;
 }
 ```
 
+以上。
